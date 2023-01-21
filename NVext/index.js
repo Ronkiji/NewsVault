@@ -13,17 +13,17 @@ window.onload = function () {
                 var queryString = url.substring(url.indexOf("q=") + 2);
                 var searchQuery = queryString.split("&")[0];
                 searchQueries.push(searchQuery.split("+").join(" "));
-                counter++; 
+                counter++;
             }
         }
     });
     console.log(searchQueries);
-    // var jsonSearchQueries = JSON.stringify(searchQueries);
-    // fetch("python file path, undetermined for now", {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: jsonSearchQueries
-    // })
+
+    $.ajax({
+        url:"/test",
+        type:"POST",
+        contentType: "application/json",
+        data: JSON.stringify(JSON.stringify(searchQueries))});
+
+
 }
